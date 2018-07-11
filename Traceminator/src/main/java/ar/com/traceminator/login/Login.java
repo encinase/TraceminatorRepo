@@ -42,7 +42,7 @@ public class Login implements Serializable  {
 
 	public String getSessionMember() {
 		try{
-			sessionUser = SessionUtils.getMemberOf();
+			sessionMember = SessionUtils.getMemberOf();
 			return sessionMember;
 		} catch (Exception e) {
 			return null;
