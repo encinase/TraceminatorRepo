@@ -29,4 +29,10 @@ public class SessionUtils {
 		else
 			return null;
 	}
+	
+	public static String getMemberOf() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(false);
+		return session.getAttribute("memberOf").toString();
+	}
 }

@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 //import ar.com.traceminator.misc.Utils;
 import ar.com.traceminator.variables.Global;
 
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "/pages/*" })
+@WebFilter(filterName = "AuthFilter", urlPatterns = { "/pages/*" , "/index.xhtml" })
 public class AuthorizationFilter implements Filter {
 
 	public AuthorizationFilter() {

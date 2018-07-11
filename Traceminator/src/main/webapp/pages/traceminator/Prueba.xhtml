@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui"> 
+<h:head>
+	<title>Utilidades - Prueba Operaciones</title>
+	<link rel="Shortcut Icon" href="images/TraceminatorIcon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</h:head>
+<h:body>
+	<h:form>
+		<div id="stickyDiv" style="position:fixed; top:0; left:0; right:0; z-index: 10; background-color: white;">
+			<ui:include src="/menuSupervielle.xhtml"/>
+		 	<h:panelGroup id="panel-Principal" layout="block" >
+		 		<h:selectOneMenu id="servicio" class="combobox form-control" value="#{prue.servicio}" >
+					<f:selectItem itemValue="" itemLabel="Seleccione..." />
+					<f:selectItem itemValue="D" itemLabel="Desarrollo"/>
+					<f:selectItem itemValue="T" itemLabel="Testing"/>
+					<f:ajax event="change" listener="#{prue.obtenerOperaciones}" render="cboperacion" execute="@this"></f:ajax>
+				</h:selectOneMenu>
+				<b:selectMultiMenu id="cboperacion" value="#{prue.operacion}" nonSelectedText="Seleccione...">
+					 <f:selectItems value="#{prue.operaciones}"/>
+				</b:selectMultiMenu>
+			</h:panelGroup>
+		</div>
+	</h:form>
+</h:body>
+</html>

@@ -25,57 +25,62 @@ public class Login implements Serializable  {
 	
 //	private String LDAPUrl = Utils.ObtenerProp(Global.DirWork + "traceminator.properties", "LDAP", "url");
 //	private String domainName = Utils.ObtenerProp(Global.DirWork + "traceminator.properties", "LDAP", "domain");
-	private String usuario;
+	private String user;
 	private String password;
-	private String nombreUsuario;
-	private String sessionUsuario;
-	private boolean render;
+	private String userName;
+	private String sessionUser;
+	private String sessionMember;
 	private boolean remember;
 	
 	public boolean isRemember() {
-        return remember;
-    }
+		return remember;
+	}
 
-    public void setRemember(boolean remember) {
-        this.remember = remember;
-    }
-	
-	public String getSessionUsuario() {
+	public void setRemember(boolean remember) {
+		this.remember = remember;
+	}
+
+	public String getSessionMember() {
 		try{
-			sessionUsuario = SessionUtils.getUserName();
-			return sessionUsuario;
+			sessionUser = SessionUtils.getMemberOf();
+			return sessionMember;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public void setSessionMember(String sessionMember) {
+		this.sessionMember = sessionMember;
+	}
+
+	public String getSessionUser() {
+		try{
+			sessionUser = SessionUtils.getUserName();
+			return sessionUser;
 		} catch (Exception e) {
 			return null;
 		}
 		
 	}
 	
-	public void setSessionUsuario(String sessionUsuario) {
-		this.sessionUsuario = sessionUsuario;
+	public void setSessionUser(String sessionUser) {
+		this.sessionUser = sessionUser;
 	}
 	
-	public boolean isRender() {
-		return render;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setRender(boolean render) {
-		this.render = render;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
+	public String getUser() {
+		return user;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 
@@ -88,7 +93,7 @@ public class Login implements Serializable  {
 	}
 
 
-	public String iniciarSesion() {
+	public String login() {
 		
 		// Si usa LDAP valido, sino al usuario ingresado lo dejo pasar sin importar la contraseña
 //		String LDAPEnable = Utils.ObtenerProp(Global.DirWork + "traceminator.properties", "LDAP", "enable");
@@ -97,9 +102,9 @@ public class Login implements Serializable  {
 		if (LDAPEnable.equals("true")) {
 //			String resultado = null;
 //			try {
-//				resultado = LoginLDAP.loginLDAP(LDAPUrl,domainName,usuario,password);
+//				resultado = LoginLDAP.loginLDAP(LDAPUrl,domainName,user,password);
 //				if ((resultado != null) && (resultado != "error")){
-//					nombreUsuario = resultado.substring(0,resultado.indexOf(";memberOf"));
+//					userName = resultado.substring(0,resultado.indexOf(";memberOf"));
 //					String grupos = resultado.substring(resultado.indexOf("memberOf:")+9);
 //					
 //					// Para el grupo SOA le doy permiso de administrador, puede acceder a todas las paginas
@@ -108,12 +113,12 @@ public class Login implements Serializable  {
 //					} else if (grupos.contains("CN=GGARE_AdminInfra")){ // al grupo de infra le doy permisos solo para hacer deploy
 //						session.setAttribute("memberOf", "pasajes");
 //					} else {  // si no tiene ninguno de esos 2 grupos lo busco en el archivo de usuario y si no está lo pongo rechazo
-//						grupos = obtenerGrupoProfile(usuario);
+//						grupos = obtenerGrupoProfile(user);
 //						session.setAttribute("memberOf", grupos);
 //					}
 //					
-//					session.setAttribute("username", nombreUsuario);
-//					session.setAttribute("user", usuario);
+//					session.setAttribute("usernauserNameuario);
+//					session.setAttribute("user", user);
 //					render = false;
 //				}
 //			} catch (Exception e) {
@@ -122,24 +127,22 @@ public class Login implements Serializable  {
 ////				e.printStackTrace();
 //			}
 		} else {
-			session.setAttribute("username", usuario);
-			session.setAttribute("user", usuario);
+			session.setAttribute("username", user);
+			session.setAttribute("user", user);
 			session.setAttribute("memberOf", "administrador");
-			render = false;
 		}
 		
 		Faces.getFlash().setKeepMessages(true);
-	    Messages.addGlobalInfo("Logged in successfully!");
-	    return "/index.xhtml?faces-redirect=true";
+//	    Messages.addGlobalInfo("Bienvenido al Traceminator!");
+	    return "/index.xhtml?faces-redi=trrectue";
 	}
 	
-	public String cerrarSesion() {
+	public String logout() {
 		HttpSession session = SessionUtils.getSession();
 		session.removeAttribute("username");
 		session.removeAttribute("user");
 		session.invalidate();
-		render = false;
-		return "/index.xhtml";
+		return "/login.xhtml?faces-redi=trrectue";
 	}
 	
 	public String obtenerGrupoProfile(String usuario) throws FileNotFoundException, IOException{

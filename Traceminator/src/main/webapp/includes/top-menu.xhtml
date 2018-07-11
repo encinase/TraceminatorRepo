@@ -4,7 +4,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:pe="http://primefaces.org/ui/extensions">
-
+	
     <ul class="nav navbar-nav">
 		<li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
@@ -33,23 +33,21 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             	<i class="fa fa-user"></i>
 <!--                 <pe:gravatar id="userImage" value="nonexisting"/> -->
-                <span class="hidden-xs">#{login.usuario}</span>
+                <span class="hidden-xs">#{login.sessionUser}</span>
             </a>
             <ul class="dropdown-menu">
                 <li class="user-header">
                     <div class="hidden-xs">
-                        <pe:gravatar style="border-radius: 50%"
-                                     value="rmpestano@gmail.com"/>
+                        <pe:gravatar style="border-radius: 50%" value="eltraceminator@gmail.com"/>
                     </div>
-                    <p>
-                        #{login.usuario}
-                        <small> Especialista </small>
+                    <p>#{login.sessionUser}
+                    	<small> #{login.sessionMember}  </small>
                     </p>
                 </li>
                 <li class="user-footer">
                     <h:form prependId="false">
                         <div class="pull-right">
-                            <p:commandLink id="logout" action="#{login.cerrarSesion}"  title="Cerrar sesión">
+                            <p:commandLink id="logout" action="#{login.logout}"  title="Cerrar sesión">
                                 <i class="fa fa-sign-out fa-2x"></i>
                             </p:commandLink>
                         </div>
