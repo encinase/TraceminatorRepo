@@ -10,7 +10,8 @@
         <h:outputStylesheet library="css" name="showcase.css"/>
         <h:outputStylesheet library="css" name="prism.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
-        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/TraceminatorIcon.ico']}"/>
+<!--         <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/TraceminatorIcon.ico']}"/> -->
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/logo.png']}"/>
 <!--         <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/apple-touch-icon.png']}" sizes="180x180"/> -->
 <!--         <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-32x32.png']}" sizes="32x32"/> -->
 <!--         <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon-16x16.png']}" sizes="16x16"/> -->
@@ -35,10 +36,15 @@
         <ui:include src="/includes/menu-search.xhtml"/>
     </ui:define>
 
+<!-- 	De acuerdo al perfil que le asigné en el login muestro el menu especifico -->
     <ui:define name="menu">
-        <ui:include src="/includes/menu.xhtml"/>
-    </ui:define>
-
+   		<ui:fragment rendered="#{login.sessionMember eq 'administrador'}">
+       		<ui:include src="/includes/menu_administrador.xhtml"/>
+        </ui:fragment>
+        <ui:fragment rendered="#{login.sessionMember ne 'administrador'}">
+       		<ui:include src="/includes/menu_publico.xhtml"/>
+        </ui:fragment>
+	</ui:define>
     <ui:define name="top-menu">
         <ui:include src="/includes/top-menu.xhtml"/>
     </ui:define>

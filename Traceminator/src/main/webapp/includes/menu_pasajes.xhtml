@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <style type="text/css">
+
+        @-moz-document url-prefix() {
+            li span.label-danger {
+                margin-top: -20px;
+            }
+        }
+    </style>
+
+    <ul class="sidebar-menu tree" data-widget="tree">
+        <li>
+            <p:link href="/index.xhtml">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </p:link>
+        </li>
+        <li class="header">
+            Integration Bus
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-bold"></i>
+                <span>Broker</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <p:link href="/pages/components/accordion.xhtml">
+                        <i class="fa fa-code"></i>
+                        <span>Trace</span>
+                    </p:link>
+                </li>
+                <li>
+                    <p:link href="/pages/components/autocomplete.xhtml">
+                        <i class="fa fa-sort-amount-desc"></i>
+                        <span>Listar EGs</span>
+                    </p:link>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-magnet"></i>
+                <span>UDPs</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <p:link href="/pages/components/accordion.xhtml">
+                        <i class="fa fa-sort-amount-desc"></i>
+                        <span>Listar</span>
+                    </p:link>
+                </li>
+                <li>
+                    <p:link href="/pages/components/autocomplete.xhtml">
+                        <i class="fa fa-exchange"></i>
+                        <span>Cambiar</span>
+                    </p:link>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-italic"></i>
+                <span>Instancias</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <p:link href="/pages/components/accordion.xhtml">
+                        <i class="fa fa-sort-amount-desc"></i>
+                        <span>Listar</span>
+                    </p:link>
+                </li>
+                <li>
+                    <p:link href="/pages/components/autocomplete.xhtml">
+                        <i class="fa fa-exchange"></i>
+                        <span>Cambiar</span>
+                    </p:link>
+                </li>
+            </ul>
+        </li>
+		<li class="header">
+            MQ
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-database"></i>
+                <span>Colas</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <p:link href="/pages/components/accordion.xhtml">
+                        <i class="fa fa-sort-amount-desc"></i>
+                        <span>Listar</span>
+                    </p:link>
+                </li>
+                <li>
+                    <p:link href="/pages/components/autocomplete.xhtml">
+                        <i class="fa fa-plus"></i>
+                        <span>Crear</span>
+                    </p:link>
+                </li>
+                <li>
+                    <p:link href="/pages/components/autocomplete.xhtml">
+                        <i class="fa fa-bar-chart"></i>
+                        <span>Estadisticas</span>
+                    </p:link>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-cc"></i>
+                <span>Canales</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <p:link href="/pages/components/accordion.xhtml">
+                        <i class="fa fa-sort-amount-desc"></i>
+                        <span>Listar</span>
+                    </p:link>
+                </li>
+            </ul>
+        </li>
+        <li class="header">
+            UTILS
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-play"></i>
+                <span>Test</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <p:link href="/pages/components/accordion.xhtml">
+                        <i class="fa fa-maxcdn"></i>
+                        <span>MQ</span>
+                    </p:link>
+                </li>
+                <li>
+                    <p:link href="/pages/components/autocomplete.xhtml">
+                        <i class="fa fa-header"></i>
+                        <span>HTTP</span>
+                    </p:link>
+                </li>
+                <li>
+                    <p:link href="/pages/components/autocomplete.xhtml">
+                        <i class="fa fa-tumblr"></i>
+                        <span>TCP</span>
+                    </p:link>
+                </li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-sitemap"></i>
+                <span>Simulador</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <p:link href="/pages/components/accordion.xhtml">
+                        <i class="fa fa-plus"></i>
+                        <span>Agregar/ver vivos</span>
+                    </p:link>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <script type="text/javascript">
+        if (isMobile()) {
+            $('ul.sidebar-menu a.ui-link').click(function () {
+                $(this).prop('disabled', true);
+                showBar();
+            })
+        }
+    </script>
+
+</ui:composition>
